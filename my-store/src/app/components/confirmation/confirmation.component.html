@@ -1,0 +1,8 @@
+<div *ngIf="order">
+  <h2>Order Confirmation</h2>
+  <p>Thank you, <strong>{{ order.name }}</strong>!</p>
+  <p>Your order total is <strong>{{ order.total | currency }}</strong>.</p>
+  <p>It will be shipped to: <strong>{{ order.address }}</strong>.</p>
+  <br />
+  <a routerLink="/">Back to store</a>
+</div>

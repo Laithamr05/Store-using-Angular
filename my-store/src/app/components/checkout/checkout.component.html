@@ -1,0 +1,46 @@
+<h2>Checkout</h2>
+
+<p>Order total: <strong>{{ total | currency }}</strong></p>
+
+<form (ngSubmit)="onSubmit()" #checkoutForm="ngForm">
+  <label>Name</label><br />
+  <input
+    type="text"
+    name="name"
+    [(ngModel)]="name"
+    (ngModelChange)="validateName()"
+    required
+  />
+  <div *ngIf="nameError" style="color:red;">Name is required.</div>
+
+  <br /><br />
+
+  <label>Address</label><br />
+  <input
+    type="text"
+    name="address"
+    [(ngModel)]="address"
+    (ngModelChange)="validateAddress()"
+    required
+  />
+  <div *ngIf="addressError" style="color:red;">Address is required.</div>
+
+  <br /><br />
+
+  <label>Credit Card</label><br />
+  <input
+    type="text"
+    name="creditCard"
+    [(ngModel)]="creditCard"
+    (ngModelChange)="validateCard()"
+    required
+    maxlength="16"
+  />
+  <div *ngIf="cardError" style="color:red;">Credit Card must be 16 digits.</div>
+
+  <br /><br />
+
+  <button type="submit" [disabled]="!checkoutForm.form.valid">
+    Submit Order
+  </button>
+</form>
